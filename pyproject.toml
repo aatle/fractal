@@ -1,0 +1,96 @@
+[tool.poetry]
+description = "fractal"
+authors = ["aatle <168398276+aatle@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pygame-ce = ">=2.5.2"
+moderngl = "^5.12.0"
+
+[tool.poetry.group.dev.dependencies]
+# These dependencies should be excluded/uninstalled when creating the exe.
+mypy = "^1.14.0"
+ruff = ">=0.8.0"
+setuptools = "^75.3.0"
+py-spy = ">=0.4.0"
+
+
+[tool.ruff]
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "B",
+    "A",
+    "S",
+    "Q",
+    "UP",
+    "C4",
+    "TD",
+    "ARG",
+    "SIM",
+    "PIE",
+    "BLE",
+    "FBT",
+    "ISC",
+    "RSE",
+    "FLY",
+    "RET",
+    "ICN",
+    "PYI",
+    "PTH",
+    "SLOT",
+    "PERF",
+    "RUF",
+    "FURB",
+    # "DOC",
+]
+ignore = [
+    "SIM105",
+    "FBT003",
+    "RUF005",  # problems with Vec2d addition
+    "ISC001",
+    "S101",
+    "S311",
+    "TD002",
+    "TD003",
+    "RUF022",
+    "RUF023"
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+
+[tool.mypy]
+exclude = "build"
+enable_error_code = [
+    "ignore-without-code",
+    "redundant-expr",
+    "possibly-undefined",
+    "truthy-bool",
+    "truthy-iterable",
+    "mutable-override",
+]
+disallow_subclassing_any = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+no_implicit_reexport = false
+strict_equality = true
+extra_checks = true
+disallow_any_unimported = true
+warn_return_any = true
+disallow_untyped_defs = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
